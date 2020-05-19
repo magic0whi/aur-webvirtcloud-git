@@ -1,5 +1,14 @@
 #!/bin/sh
 
+#---  FUNCTION  ----------------------------------------------------------------
+#          NAME:  echoerr
+#   DESCRIPTION:  Echo errors to stderr.
+#-------------------------------------------------------------------------------
+echoerror() {
+    printf "${RC} * ERROR${EC}: $@\n" 1>&2;
+}
+
+
 if [ -f /etc/libvirt/libvirtd.conf ]; then
     sed -i 's/#listen_tls/listen_tls/g' /etc/libvirt/libvirtd.conf
     sed -i 's/#listen_tcp/listen_tcp/g' /etc/libvirt/libvirtd.conf
