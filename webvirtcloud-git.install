@@ -36,9 +36,9 @@ post_upgrade() {
 }
 
 post_remove() {
-	# Notifying the user of kept dirs
-	[[ -d "${_server_root}" ]] && echo "Some important files in ${_server_root} were kept on your system."
-	echo "The ${_user} user was preserved on your system."
+  # Notifying the user of kept dirs
+  [[ -d "${_server_root}" ]] && echo "Some important files in ${_server_root} were kept on your system."
+      echo "The ${_user} user was preserved on your system."
 
   # Remove virtualenv files
   rm -rf /srv/webvirtcloud/venv
