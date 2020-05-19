@@ -1,4 +1,5 @@
 # Maintainer: StoneCold <forumi0721[at]gmail[dot]com>
+# Contributer: Ndoskrnl <lollipop.studio.cn@gmail.com>
 
 _gitname="webvirtcloud"
 pkgname=("${_gitname}-git")
@@ -13,6 +14,7 @@ makedepends=("git" "gcc")
 provides=("webvirtcloud" "webvirtcloud-git")
 conflicts=("webvirtcloud" "webvirtcloud-git" "webvirtmgr" "webvirtmgr-git")
 install="${pkgname}.install"
+backup=("srv/webvirtcloud/webvirtcloud/settings.py")
 source=("${_gitname}::git+https://github.com/retspen/webvirtcloud.git")
 md5sums=("SKIP")
 
