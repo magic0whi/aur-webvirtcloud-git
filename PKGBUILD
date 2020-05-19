@@ -9,7 +9,7 @@ pkgdesc="WebVirtCloud is virtualization web interface for admins and users"
 arch=("x86_64")
 url="https://github.com/retspen/webvirtcloud"
 license=("Apache")
-depends=("python-virtualenv" "python" "python-lxml" "libvirt" "libssh" "zlib" "libxslt" "nginx" "supervisor" "libsasl" "python-pkgconfig")
+depends=("python-virtualenv" "python" "python-lxml" "libvirt" "dnsmasq" "ebtables" "libssh" "zlib" "libxslt" "nginx" "supervisor" "libsasl" "python-pkgconfig" "python-libguestfs")
 makedepends=("git" "gcc")
 provides=("webvirtcloud" "webvirtcloud-git")
 conflicts=("webvirtcloud" "webvirtcloud-git" "webvirtmgr" "webvirtmgr-git")
@@ -18,7 +18,7 @@ backup=("srv/webvirtcloud/webvirtcloud/settings.py")
 source=("${_gitname}::git+https://github.com/retspen/webvirtcloud.git"
 		"configuration-install.sh")
 md5sums=('SKIP'
-         '1d680b1448beccdea782503ce26c0e0e')
+         'ae116f6e8b513bf25b1f0e1176712f9a')
 
 pkgver() {
 	cd "${srcdir}/${_gitname}"

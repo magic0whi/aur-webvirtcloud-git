@@ -12,7 +12,7 @@ echoerror() {
 if [ -f /etc/libvirt/libvirtd.conf ]; then
     sed -i 's/#listen_tls/listen_tls/g' /etc/libvirt/libvirtd.conf
     sed -i 's/#listen_tcp/listen_tcp/g' /etc/libvirt/libvirtd.conf
-    sed -i 's/#auth_tcp/auth_tcp/g' /etc/libvirt/libvirtd.conf
+    sed -i 's/#auth_tcp = "sasl"/auth_tcp="none"/g' /etc/libvirt/libvirtd.conf
 else
     echoerror "/etc/libvirt/libvirtd.conf not found. Exiting..."
     exit 1
@@ -30,6 +30,8 @@ if [ -f /etc/supervisord.conf ]; then
     wget -O /usr/local/bin/gstfsd https://raw.githubusercontent.com/retspen/webvirtcloud/master/conf/daemon/gstfsd
     chmod +x /usr/local/bin/gstfsd
     wget -O /etc/supervisor.d/gstfsd.ini https://raw.githubusercontent.com/retspen/webvirtcloud/master/conf/supervisor/gstfsd.conf
+    # Correct python path
+    sed -i 's/command=/srv/webvirtcloud/venv/bin/python3/command=/usr/bin/python3/g' /etc/supervisor.d/gstfsd.ini
 else
     echoerror "Supervisor not found. Exiting..."
     exit 1
