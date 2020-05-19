@@ -3,7 +3,7 @@
 
 _gitname="webvirtcloud"
 pkgname=("${_gitname}-git")
-pkgver=20200420.767.d9fa434
+pkgver=20180824.422.3f98aa2
 pkgrel=1
 pkgdesc="WebVirtCloud is virtualization web interface for admins and users"
 arch=("x86_64")
@@ -15,8 +15,10 @@ provides=("webvirtcloud" "webvirtcloud-git")
 conflicts=("webvirtcloud" "webvirtcloud-git" "webvirtmgr" "webvirtmgr-git")
 install="${pkgname}.install"
 backup=("srv/webvirtcloud/webvirtcloud/settings.py")
-source=("${_gitname}::git+https://github.com/retspen/webvirtcloud.git")
-md5sums=("SKIP")
+source=("${_gitname}::git+https://github.com/retspen/webvirtcloud.git"
+		"configuration-install.sh")
+md5sums=('SKIP'
+         '9a313d02b2fddce30d7f334d90dfb59f')
 
 pkgver() {
 	cd "${srcdir}/${_gitname}"
@@ -27,7 +29,9 @@ package() {
 	install -dm0755 "${pkgdir}/srv/webvirtcloud"
 	cp -r "${srcdir}/webvirtcloud" "${pkgdir}/srv"
 	rm -rf "${pkgdir}/srv/webvirtcloud/.git"
-	
+
+	install -Dm0755 "${srcdir}/configuration-install.sh" "${pkgdir}/srv/webvirtcloud/configuration-install.sh"
+
 	cd "${pkgdir}/srv/webvirtcloud"
 
 	# Will auto generate secret key in post_install()
