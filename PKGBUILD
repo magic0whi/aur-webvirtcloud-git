@@ -28,10 +28,10 @@ package() {
 	
 	cd "${pkgdir}/srv/webvirtcloud"
 
-    # Will auto generate secret key in post_install()
+	# Will auto generate secret key in post_install()
 	cp webvirtcloud/settings.py.template webvirtcloud/settings.py
 
-    # Install config
+	# Install config
 	install -dm0755 "${pkgdir}/etc/supervisor.d"
 	sed "s/user=www-data/user=webvirtcloud/g" -i "${srcdir}/webvirtcloud/conf/supervisor/webvirtcloud.conf"
 	install -Dm0644 "${srcdir}/webvirtcloud/conf/supervisor/webvirtcloud.conf" "${pkgdir}/etc/supervisor.d/webvirtcloud.ini"
