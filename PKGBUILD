@@ -18,7 +18,7 @@ backup=("srv/webvirtcloud/webvirtcloud/settings.py")
 source=("${_gitname}::git+https://github.com/retspen/webvirtcloud.git"
 		"configuration-install.sh")
 md5sums=('SKIP'
-         '9a313d02b2fddce30d7f334d90dfb59f')
+         'de75d0c7bc2d3414718fedf7a0376d4d')
 
 pkgver() {
 	cd "${srcdir}/${_gitname}"

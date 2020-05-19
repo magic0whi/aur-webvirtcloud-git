@@ -17,7 +17,7 @@ else
 fi
 
 # Need install python-libguestfs from AUR
-if [ -f /etc/supervisor/supervisord.conf ]; then
+if [ -f /etc/supervisord.conf ]; then
     wget -O /usr/local/bin/gstfsd https://raw.githubusercontent.com/retspen/webvirtcloud/master/conf/daemon/gstfsd
     chmod +x /usr/local/bin/gstfsd
     wget -O /etc/supervisor.d/gstfsd.ini https://raw.githubusercontent.com/retspen/webvirtcloud/master/conf/supervisor/gstfsd.conf
